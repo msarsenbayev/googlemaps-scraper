@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+# import collections
+# collections.Callable = collections.abc.Callable
 import pandas as pd
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
@@ -372,12 +374,12 @@ class GoogleMapsScraper:
             options.add_argument("--window-size=1366,768")
 
         options.add_argument("--disable-notifications")
-        #options.add_argument("--lang=en-GB")
-        options.add_argument("--accept-lang=en-GB")
-        input_driver = webdriver.Chrome(executable_path=ChromeDriverManager(log_level=0).install(), options=options)
+        options.add_argument("--lang=en-GB")
+        options.binary_location = "C:\Program Files\Google\Chrome\Application\chrome.exe"
+        input_driver = webdriver.Chrome(executable_path=r"C:\Users\Massan\OneDrive - London Metropolitan University\Desktop\6.DataAnalysisForPortfolio\GoogleMapsScraper\googlemaps-scraper\chromedriver.exe", options=options)
 
-         # click on google agree button so we can continue (not needed anymore)
-         # EC.element_to_be_clickable((By.XPATH, '//span[contains(text(), "I agree")]')))
+        # click on google agree button so we can continue (not needed anymore)
+        # EC.element_to_be_clickable((By.XPATH, '//span[contains(text(), "I agree")]')))
         input_driver.get(GM_WEBPAGE)
 
         return input_driver
