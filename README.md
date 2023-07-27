@@ -5,12 +5,12 @@ An additional extension helps to monitor and incrementally store the reviews in 
 
 ## Installation
 Follow these steps to use the scraper:
-- Download Chromedrive from [here](https://chromedriver.storage.googleapis.com/index.html?path=2.45/).
+- Download Chromedrive from [here](https://chromedriver.chromium.org/downloads). You need to check compatability of your Chromedriver with your installed chrome browser version.
 - Install Python packages from requirements file, either using pip, conda or virtualenv:
 
         conda create --name scraping python=3.6 --file requirements.txt
 
-**Note**: Python >= 3.6 is required.
+**Note**: Python >= 3.6 is required. If you have installed Python 3.11, you can install Python 3.6 and make sure it is added to the Path (make sure to move it up in your environment).
 
 ## Basic Usage
 The scraper.py script needs two main parameters as input:
@@ -19,7 +19,7 @@ The scraper.py script needs two main parameters as input:
 
 Example:
 
-  `python scraper.py --N 50`
+  `python scraper.py --N 50 --sort_by newest`
 
 generates a csv file containing last 50 reviews of places present in _urls.txt_
 
