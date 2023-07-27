@@ -51,3 +51,6 @@ If you want to generate the correct url:
 1. Go to Google Maps and look for a specific place;
 2. Click on the number of reviews in the parenthesis;
 3. Save the url that is generated from previous interaction.
+
+
+<!-- comment -->
