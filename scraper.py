@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*- coding: UTF-8 -*-
 from googlemaps import GoogleMapsScraper
 from datetime import datetime, timedelta
 import argparse
@@ -13,7 +13,7 @@ HEADER_W_SOURCE = ['id_review', 'caption', 'relative_date','retrieval_date', 'ra
 
 def csv_writer(source_field, ind_sort_by, path='data/'):
     outfile= ind_sort_by + '_gm_reviews.csv'
-    targetfile = open(path + outfile, mode='w', encoding='utf-8', newline='\n')
+    targetfile = open(path + outfile, mode='w', encoding='UTF-8', newline='\n')
     writer = csv.writer(targetfile, quoting=csv.QUOTE_MINIMAL)
 
     if source_field:

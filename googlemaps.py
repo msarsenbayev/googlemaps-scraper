@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*- coding: UTF-8 -*-
 # import collections
 # collections.Callable = collections.abc.Callable
 import pandas as pd
@@ -24,7 +24,7 @@ import itertools
 GM_WEBPAGE = 'https://www.google.com/maps/'
 MAX_WAIT = 10
 MAX_RETRY = 5
-MAX_SCROLLS = 40
+MAX_SCROLLS = 100
 
 class GoogleMapsScraper:
 
@@ -195,15 +195,51 @@ class GoogleMapsScraper:
 
         try:
             # TODO: Subject to changes
-            rating = float(review.find('span', class_='kvMYJc')['aria-label'].split(' ')[0])
+            #rating = float(review.find('span', class_='fzvQIb')['aria-label'].split(' ')[0])
+            rating = review.find('span', class_='fzvQIb').text
         except Exception as e:
             rating = None
+        # try:
+        #     # Attempt to extract star rating
+        #     rating_element = review.find('span', class_='kvMYJc')
+        #     if rating_element:
+        #         # For star ratings, extract the numeric part from the aria-label attribute
+        #         rating = float(rating_element['aria-label'].split(' ')[0])
+        #     else:
+        #         # If star rating not found, try to extract numbered rating using regular expression
+        #         all_review_text = review.get_text()
+        #         rating = all_review_text
+        #         pattern = r"\d+/\d+"
+        #         matches = re.search(pattern, all_review_text)
+        #         if matches:
+        #             rating = matches.group()[0]
+        #         else:
+        #             rating = None
+        # except Exception as e:
+        #     rating = None
 
         try:
             # TODO: Subject to changes
-            relative_date = review.find('span', class_='rsqaWe').text
+            relative_date = review.find('span', class_='xRkPPb').text
         except Exception as e:
             relative_date = None
+
+        # try:
+        #     # TODO: Subject to changes
+        #     review_element = review.find('span', class_='rsqaWe')
+        #     if review_element:
+        #         relative_date = review.find('span', class_='rsqaWe').text
+        #     else:
+        #         all_review_text = review.get_text()
+        #         relative_date = all_review_text
+        #         pattern = r"\d+\s+(?:second|minute|hour|day|week|month|year)s?\s+ago"
+        #         matches = re.search(pattern, all_review_text)
+        #         if matches:
+        #             relative_date = matches.group().strip()
+        #         else:
+        #             relative_date = None
+        # except Exception as e:
+        #     relative_date = None
 
         try:
             n_reviews = review.find('div', class_='RfnDt').text.split(' ')[3]
@@ -369,7 +405,7 @@ class GoogleMapsScraper:
         options = Options()
 
         if not self.debug:
-            options.add_argument("--headless")
+            options.add_argument("--headless=new")
         else:
             options.add_argument("--window-size=1366,768")
 

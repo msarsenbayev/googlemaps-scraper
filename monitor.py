@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
+# -*- coding: UTF-8 -*-
 from pymongo import MongoClient
 from googlemaps import GoogleMapsScraper
 from datetime import datetime, timedelta
